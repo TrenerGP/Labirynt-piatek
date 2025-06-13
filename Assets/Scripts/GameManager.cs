@@ -5,6 +5,10 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
     [SerializeField] private float timeToEnd;
+    public int points = 0;
+    public int redKey = 0;
+    public int greenKey = 0;
+    public int blueKey = 0;
     bool win;
     bool gamePaused;
 
@@ -73,5 +77,15 @@ public class GameManager : MonoBehaviour
                 PauseGame();
             }
         }
+    }
+
+    public void AddPoints(int p)
+    {
+        points += p;
+    }
+
+    public void AddTime(int t)
+    {
+        timeToEnd += t;
     }
 }

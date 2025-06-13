@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FAST
   - SLOW
+  - PICKUP
   layers:
   - Default
   - TransparentFX

@@ -46,4 +46,12 @@ public class PlayerMovement : MonoBehaviour
 
         characterController.Move(move * speed * Time.deltaTime);
     }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if(hit.gameObject.tag == "PICKUP")
+        {
+            hit.gameObject.GetComponent<PickUp>().Picked();
+        }
+    }
 }
