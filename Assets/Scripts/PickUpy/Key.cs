@@ -9,5 +9,10 @@ public enum KeyColor
 
 public class Key : PickUp
 {
-    
+    public KeyColor color;
+    public override void Picked()
+    {
+        base.Picked();
+        GameManager.gameManager.AddKey(color);
+    }
 }

@@ -88,4 +88,17 @@ public class GameManager : MonoBehaviour
     {
         timeToEnd += t;
     }
+
+    public void AddKey(KeyColor color)
+    {
+        if (color == KeyColor.Red) redKey++;
+        else if (color == KeyColor.Green) greenKey++;
+        else if (color == KeyColor.Blue) blueKey++;
+    }
+
+    public void FreezeTime(int time)
+    {
+        CancelInvoke(nameof(Stoper));
+        InvokeRepeating(nameof(Stoper), time, 1f);
+    }
 }
