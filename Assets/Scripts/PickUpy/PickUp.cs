@@ -12,6 +12,7 @@ public class PickUp : MonoBehaviour
 
     public virtual void Picked()
     {
+        GameManager.gameManager.PlayClip(GameManager.gameManager.pickupClip);
         Debug.Log("Pickup collected!");
         Destroy(this.gameObject);
     }

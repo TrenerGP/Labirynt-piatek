@@ -11,6 +11,14 @@ public class GameManager : MonoBehaviour
     public int blueKey = 0;
     bool win;
     bool gamePaused;
+    AudioSource audioSource;
+    public AudioClip resumeClip;
+    public AudioClip pauseClip;
+    public AudioClip winClip;
+    public AudioClip loseClip;
+    public AudioClip pickupClip;
+
+    public SoundtrackScript soundtrack;
 
     private void Start()
     {
@@ -18,8 +26,15 @@ public class GameManager : MonoBehaviour
         { 
             gameManager = this; 
         }
+        audioSource = GetComponent<AudioSource>();
         InvokeRepeating("Stoper", 1f, 1f);
         gamePaused = false;
+    }
+
+    public void PlayClip(AudioClip clip)
+    {
+        audioSource.clip = clip;
+        audioSource.Play();
     }
 
     void Stoper()
@@ -47,6 +62,8 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
+        soundtrack.OnPauseGame();
+        PlayClip(pauseClip);
         Debug.Log("Game Paused");
         gamePaused=true;
         Time.timeScale = 0f;
@@ -54,6 +71,8 @@ public class GameManager : MonoBehaviour
 
     public void ResumeGame()
     {
+        soundtrack.OnResumeGame();
+        PlayClip(resumeClip);
         Debug.Log("Game Resumed");
         gamePaused = false;
         Time.timeScale = 1f;
