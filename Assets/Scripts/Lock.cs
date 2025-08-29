@@ -19,6 +19,8 @@ public class Lock : MonoBehaviour
         {
             canOpen = true;
             Debug.Log("You can open the lock");
+            GameManager.gameManager.inGameText.text 
+                = "Press E to open the lock";
         }
     }
 
@@ -28,6 +30,7 @@ public class Lock : MonoBehaviour
         {
             canOpen = false;
             Debug.Log("You cannot open the lock");
+            GameManager.gameManager.inGameText.text = "";
         }
     }
 
@@ -44,18 +47,21 @@ public class Lock : MonoBehaviour
         if (GameManager.gameManager.redKey>0 && myColor==KeyColor.Red)
         {
             GameManager.gameManager.redKey--;
+            GameManager.gameManager.redKeyText.text = GameManager.gameManager.redKey.ToString();
             unlocked = true;
             return true;
         }
         if (GameManager.gameManager.greenKey > 0 && myColor == KeyColor.Green)
         {
             GameManager.gameManager.greenKey--;
+            GameManager.gameManager.greenKeyText.text = GameManager.gameManager.greenKey.ToString();
             unlocked = true;
             return true;
         }
         if (GameManager.gameManager.blueKey > 0 && myColor == KeyColor.Blue)
         {
             GameManager.gameManager.blueKey--;
+            GameManager.gameManager.blueKeyText.text = GameManager.gameManager.blueKey.ToString();
             unlocked = true;
             return true;
         }
